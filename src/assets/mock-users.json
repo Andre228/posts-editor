@@ -1,0 +1,29 @@
+{
+  "users": [
+    {
+      "login": "johnMiller123",
+      "password": "qwerty"
+    },
+
+    {
+      "login": "Carter777",
+      "password": "Lol777_sss"
+    },
+
+    {
+      "login": "JackMack",
+      "password": "pjFSwws481"
+    },
+
+    {
+      "login": "steamBeam",
+      "password": "fgs34FDs"
+    },
+
+    {
+      "login": "Luna97",
+      "password": "SupaDupaFly9090"
+    }
+  ]
+
+}
