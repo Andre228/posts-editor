@@ -6,7 +6,7 @@ export class AuthService {
   constructor() {
   }
 
-  isLggedIn(): boolean {
+  isLoggedIn(): boolean {
     return !!localStorage.getItem('pe-login');
   }
 
@@ -14,10 +14,14 @@ export class AuthService {
     localStorage.removeItem('pe-login');
   }
 
-  setUser(login: string): void {
+  login(login: string): void {
     if (login.trim()) {
       localStorage.setItem('pe-login', login);
     }
+  }
+
+  getUser(): string {
+    return localStorage.getItem('pe-login');
   }
 
 }

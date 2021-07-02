@@ -4,4 +4,12 @@ app-login {
   div.container {
     margin-top: 5%;
   }
+
+  .error {
+    border-color: red;
+  }
+
+  .not-found {
+    color: red;
+  }
 }

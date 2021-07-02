@@ -11,7 +11,7 @@ export class UsersService {
 
   constructor(private http: HttpClient) {}
 
-  public async getUsers(login: string, password: string): Promise<User> {
+  public async getUser(login: string, password: string): Promise<User> {
 
     const usersArray = await this.http.get('../../assets/mock-users.json').toPromise() as any;
 
