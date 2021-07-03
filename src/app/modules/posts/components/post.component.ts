@@ -7,6 +7,7 @@ import {Store} from "@ngrx/store";
 import {AppState} from "../../../store/app.state";
 import {DeletePost} from "../../../store/posts.action";
 import {AuthService} from "../../../core/services/auth.service";
+import {NgbModalRef} from "@ng-bootstrap/ng-bootstrap/modal/modal-ref";
 
 @Component({
   selector: 'app-post',
@@ -56,7 +57,7 @@ export class AppPostComponent {
               private popupService: PopupService) {
   }
 
-  editPost(): void {
+  editPost(): NgbModalRef {
     const modalRef = this.modalService.open(EditPostDialogComponent, { size: 'lg' });
     modalRef.result
       .then(response => {
@@ -68,6 +69,8 @@ export class AppPostComponent {
     })
       .catch((res) => {});
     modalRef.componentInstance.post = this.post;
+
+    return modalRef;
   }
 
   deletePost(): void {
