@@ -15,7 +15,6 @@ import {SharedModule} from "./shared/shared.module";
     AppComponent
   ],
   imports: [
-
     SharedModule,
     StoreModule.forRoot({postReducer: postsReducer}),
     APP_ROUTING,

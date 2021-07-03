@@ -4,7 +4,7 @@ const initialState = {
   posts: []
 };
 
-export function postsReducer(state = initialState, action: postsAction) {
+export function postsReducer(state = initialState, action: postsAction): {} {
 
   switch (action.type) {
 

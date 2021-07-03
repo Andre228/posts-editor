@@ -4,6 +4,7 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {AddNewPostDialogComponent} from "./modules/posts/components/add-new-post.dialog";
 import {PopupService} from "./shared/widgets/popups/services/popup.service";
 import {Router} from "@angular/router";
+import {NgbModalRef} from "@ng-bootstrap/ng-bootstrap/modal/modal-ref";
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,6 @@ import {Router} from "@angular/router";
   providers: [AuthService]
 })
 export class AppComponent {
-  title = 'posts-editor';
 
   constructor(private auth: AuthService,
               private router: Router,
@@ -27,7 +27,7 @@ export class AppComponent {
     return this.auth.getUser() || '';
   }
 
-  addNewPost(): void {
+  addNewPost(): NgbModalRef {
     const modalRef = this.modalService.open(AddNewPostDialogComponent, { size: 'lg' });
     modalRef.result
       .then(response => {
@@ -38,11 +38,13 @@ export class AppComponent {
         }
     })
       .catch((res) => {});
+
+    return modalRef;
   }
 
-  logout() {
+  logout(): void {
     this.auth.logout();
-    this.router.navigate(['/login'])
+    this.router.navigate(['/login']);
   }
 
 }

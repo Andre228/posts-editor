@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {UsersService} from "../../../core/services/users.service";
+import {User, UsersService} from "../../../core/services/users.service";
 import {AuthService} from "../../../core/services/auth.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
@@ -19,7 +19,7 @@ import {Router} from "@angular/router";
                       <label for="email" class="col-md-4 col-form-label text-md-right">Login</label>
 
                       <div class="col-md-6">
-                        <input formControlName="login" class="form-control" [class.error]="login.invalid" autofocus>
+                        <input formControlName="login" class="form-control log" [class.error]="login.invalid" autofocus>
                       </div>
                     </div>
 
@@ -27,7 +27,7 @@ import {Router} from "@angular/router";
                       <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
 
                       <div class="col-md-6">
-                        <input formControlName="password" class="form-control" [class.error]="password.invalid">
+                        <input formControlName="password" class="form-control pass" [class.error]="password.invalid">
                       </div>
                     </div>
 
@@ -85,7 +85,7 @@ export class AppLoginComponent implements OnInit {
     return this.loginForm.get('password');
   }
 
-  async signIn(): Promise<void> {
+  async signIn(): Promise<User> {
     const user = await this.usersService.getUser(this.login.value, this.password.value);
     if (user) {
       this.auth.login(user.login);
@@ -93,6 +93,8 @@ export class AppLoginComponent implements OnInit {
     } else {
       this.userNotFound = true;
     }
+
+    return user;
   }
 
 }
